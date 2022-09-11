@@ -1,0 +1,56 @@
+.container {
+	width: fit-content;
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+
+.title {
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: red;
+	text-align: center;
+}
+
+.price {
+	font-size: 1.1rem;
+	font-weight: bold;
+	color: #444;
+}
+
+.description {
+	font-size: 1rem;
+	font-weight: lighter;
+	font-style: italic;
+	color: #777;
+	text-align: center;
+}
+
+.img-container {
+	width: 14rem;
+	height: 14rem;
+	position: relative;
+}
+
+.img-container:hover {
+	transform: scale(1.2);
+	transition: all 0.75s ease-in-out;
+}
+
+@media screen and (max-width: 480px) {
+	.title {
+		font-size: 1.3rem;
+		text-align: center;
+	}
+
+	.price {
+		font-size: 1.3rem;
+	}
+	.description {
+		font-size: 1.1rem;
+		line-height: 1.2rem;
+	}
+}

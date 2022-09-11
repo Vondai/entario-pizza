@@ -1,0 +1,85 @@
+.header {
+	background-color: red;
+	position: sticky;
+	top: 0;
+	z-index: 100;
+}
+.nav-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	height: 5rem;
+	padding: 0 3rem;
+}
+
+.logo {
+	cursor: pointer;
+}
+
+.title:hover {
+	transform: scale(1.2);
+	transition: all 0.75s ease-in-out;
+}
+
+.nav-items-list {
+	margin: 0;
+	list-style: none;
+	padding: 0;
+	display: flex;
+	gap: 4rem;
+	align-items: center;
+}
+
+.nav-item-order {
+	background-color: white;
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
+	padding: 0.3rem;
+	border-radius: 0.5rem;
+	cursor: pointer;
+}
+
+.nav-item-order a {
+	color: black;
+}
+
+.nav-item-order a:hover {
+	text-decoration: none;
+}
+
+.nav-item-order:nth-child(1) {
+	font-size: 1.1rem;
+	font-weight: bold;
+	color: black;
+}
+
+.nav-item-cart {
+	position: relative;
+	cursor: pointer;
+}
+
+.cart-counter {
+	color: black;
+	position: absolute;
+	bottom: 1.1rem;
+	left: 1.4rem;
+	width: 20px;
+	height: 20px;
+	background-color: white;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+@media screen and (max-width: 480px) {
+	.menu {
+		display: none;
+	}
+
+	.nav-container {
+		padding: 0 1rem;
+		gap: 0.5rem;
+	}
+}

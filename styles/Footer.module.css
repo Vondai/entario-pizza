@@ -1,0 +1,23 @@
+.container {
+	background-color: red;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	width: 100%;
+}
+
+.cta-list,
+.socials-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.5rem;
+	font-size: 1.1rem;
+	font-weight: bold;
+}
+
+@media screen and (max-width: 480px) {
+	.cta-list,
+	.socials-list {
+		justify-content: space-around;
+	}
+}
