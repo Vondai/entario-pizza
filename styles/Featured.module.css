@@ -1,8 +1,9 @@
 .container {
-	height: calc(100vh - 5rem);
+	height: 100vh;
 	overflow: hidden;
-	background-color: red;
+	background-color: white;
 	position: relative;
+	width: 100%;
 }
 
 .arrow-container {
@@ -17,7 +18,7 @@
 }
 
 .carousel-wrapper {
-	width: 300vw;
+	width: max-content;
 	height: 100%;
 	display: flex;
 	transition: all 0.75s ease-in-out;

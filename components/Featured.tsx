@@ -10,7 +10,7 @@ const Featured = () => {
 		'/img/featured3.png',
 		'/img/featured2.png'
 	];
-	let delay = 3000;
+	let delay = 4000;
 
 	function resetTimeout() {
 		if (timeoutRef.current) {
@@ -37,7 +37,7 @@ const Featured = () => {
 	}
 
 	return (
-		<div className={styles.container}>
+		<div className='w-full h-screen overflow-hidden bg-secondary relative'>
 			<div
 				className={styles['arrow-container']}
 				style={{ left: 0 }}

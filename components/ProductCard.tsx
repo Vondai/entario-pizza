@@ -1,24 +1,32 @@
 import { NextPage } from 'next';
 import Image from 'next/image';
-import { TProduct } from '../types/TBaseProduct';
-import styles from '../styles/ProductCard.module.css';
+import { TBaseProduct } from '../types/TBaseProduct';
 import Link from 'next/link';
 
-const ProductCard: NextPage<{ product: TProduct }> = ({ product }) => {
+const ProductCard: NextPage<{ product: TBaseProduct }> = ({ product }) => {
 	return (
 		<Link href={`/product/${product._id}`}>
-			<div className={styles.container}>
-				<div className={styles['img-container']}>
-					<Image
-						src={product.imgUrl}
-						alt={product.name}
-						layout='fill'
-						objectFit='contain'
-					/>
+			<div className='card bg-primary shadow-xl w-1/3 cursor-pointer'>
+				<div className='card-body flex flex-col text-center'>
+					<h2 className='card-title justify-center text-accent text-3xl'>
+						{product.name}
+					</h2>
+					<p className='text-base-200 text-xl'>{product.description}</p>
+					<span className='text-accent'>
+						Starting from{' '}
+						<span className='text-base-200 font-bold'>
+							${product.prices[0].toFixed(2)}
+						</span>
+					</span>
+					<figure className='w-full'>
+						<Image
+							src={product.imgUrl}
+							alt={product.name}
+							width='100%'
+							height='100%'
+						/>
+					</figure>
 				</div>
-				<h2 className={styles.title}>{product.name}</h2>
-				<span className={styles.price}>${product.prices[0].toFixed(2)}</span>
-				<p className={styles.description}>{product.description}</p>
 			</div>
 		</Link>
 	);
