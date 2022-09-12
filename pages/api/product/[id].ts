@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import Product from '../../../models/Product';
+import Product, { IProduct } from '../../../models/Product';
 import dbConnect from '../../../utils/mongo';
 
 export default async function handler(
@@ -14,7 +14,14 @@ export default async function handler(
 	} = req;
 	if (method === 'GET') {
 		try {
-			const product = await Product.findById(id);
+			const product = await Product.findById<IProduct>(id).select({
+				_id: 1,
+				name: 1,
+				description: 1,
+				prices: 1,
+				imgUrl: 1,
+				extraOptions: 1
+			});
 			res.status(200).json(product);
 		} catch (error) {
 			res.status(500).json(error);

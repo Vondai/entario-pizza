@@ -11,6 +11,7 @@ const Navbar = () => {
 	const [loading, setLoading] = useState(true);
 	useEffect(() => {
 		const cartAsString = localStorage.getItem('cart');
+
 		if (cartAsString) {
 			const cart: TCartProduct[] = JSON.parse(cartAsString);
 			setLoading(false);
@@ -78,7 +79,7 @@ const Navbar = () => {
 									></Image>
 								</a>
 							</Link>
-							{loading || quantity === 0 ? (
+							{loading || cartQuantity === 0 ? (
 								''
 							) : (
 								<span className={styles['cart-counter']}>{cartQuantity}</span>

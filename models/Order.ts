@@ -1,7 +1,17 @@
-import mongoose from 'mongoose';
+import { model, models, Schema } from 'mongoose';
 import Status from '../utils/enums/status';
 
-const OrderSchema = new mongoose.Schema(
+export interface IOrder {
+	_id: string;
+	customer: string;
+	address: string;
+	total: number;
+	status: number;
+	paymentMethod: number;
+	phone: number;
+}
+
+const OrderSchema = new Schema<IOrder>(
 	{
 		customer: {
 			type: String,
@@ -32,4 +42,4 @@ const OrderSchema = new mongoose.Schema(
 	},
 	{ timestamps: true }
 );
-export default mongoose.models.Order || mongoose.model('Order', OrderSchema);
+export default models.Order || model('Order', OrderSchema);

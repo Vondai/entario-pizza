@@ -33,7 +33,9 @@ const Footer = () => {
 							<Link href={'/'}>Youtube</Link>
 						</li>
 						<li className={styles['social-item']}>
-							<Link href={'/'}>Github</Link>
+							<Link href={'https://github.com/Vondai/entario-pizza'}>
+								Github
+							</Link>
 						</li>
 					</ul>
 				</div>
