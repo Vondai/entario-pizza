@@ -1,0 +1,10 @@
+.container {
+	height: 100vh;
+	padding: 2rem 3rem;
+	text-align: center;
+}
+
+.title h1 {
+	display: inline;
+	border-bottom: 1px solid #000;
+}
