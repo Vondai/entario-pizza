@@ -15,7 +15,7 @@ const ProductList: NextPage<{ productList: TBaseProduct[] }> = ({
 				excepturi natus placeat sed maxime quibusdam nam enim! Reiciendis,
 				labore?
 			</h3>
-			<div className='container'>
+			<div className='container flex gap-5'>
 				{productList.map((product) => (
 					<ProductCard
 						key={product._id}

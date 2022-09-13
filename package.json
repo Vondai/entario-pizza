@@ -1,36 +1,39 @@
 {
-  "name": "entario-pizza",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@reduxjs/toolkit": "^1.8.5",
-    "@types/mongoose": "^5.11.97",
-    "@types/react-redux": "^7.1.24",
-    "axios": "^0.27.2",
-    "daisyui": "^2.27.0",
-    "mongoose": "^6.5.4",
-    "next": "12.2.5",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-redux": "^8.0.2",
-    "redux": "^4.2.0"
-  },
-  "devDependencies": {
-    "@types/node": "18.7.14",
-    "@types/react": "18.0.18",
-    "@types/react-dom": "18.0.6",
-    "autoprefixer": "^10.4.9",
-    "eslint": "8.23.0",
-    "eslint-config-next": "12.2.5",
-    "eslint-config-prettier": "^8.5.0",
-    "postcss": "^8.4.16",
-    "tailwindcss": "^3.1.8",
-    "typescript": "4.8.2"
-  }
+	"name": "entario-pizza",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"@reduxjs/toolkit": "^1.8.5",
+		"@types/mongoose": "^5.11.97",
+		"@types/react-redux": "^7.1.24",
+		"axios": "^0.27.2",
+		"bcrypt": "^5.0.1",
+		"cookie": "^0.5.0",
+		"daisyui": "^2.27.0",
+		"mongoose": "^6.5.4",
+		"next": "12.2.5",
+		"react": "18.2.0",
+		"react-daisyui": "^2.4.1",
+		"react-dom": "18.2.0",
+		"react-redux": "^8.0.2",
+		"redux": "^4.2.0"
+	},
+	"devDependencies": {
+		"@types/node": "18.7.14",
+		"@types/react": "18.0.18",
+		"@types/react-dom": "18.0.6",
+		"autoprefixer": "^10.4.9",
+		"eslint": "8.23.0",
+		"eslint-config-next": "12.2.5",
+		"eslint-config-prettier": "^8.5.0",
+		"postcss": "^8.4.16",
+		"tailwindcss": "^3.1.8",
+		"typescript": "4.8.2"
+	}
 }

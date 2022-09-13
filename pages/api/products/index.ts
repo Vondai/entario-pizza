@@ -6,7 +6,7 @@ export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
 ) {
-	dbConnect();
+	await dbConnect();
 
 	const { method } = req;
 	if (method === 'GET') {
