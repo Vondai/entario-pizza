@@ -75,7 +75,7 @@ const SignupForm: React.FC<{
 					/>
 				</label>
 				<label className='input-group cursor-pointer'>
-					<span className='w-1/4'>Repeat password</span>
+					<span className='w-1/4 leading-5'>Repeat password</span>
 					<input
 						onBlur={(e) => handleBlur(e)}
 						name='repeat-password'
@@ -94,7 +94,7 @@ const SignupForm: React.FC<{
 					</span>
 				</span>
 				<div
-					className='alert alert-warning shadow-lg w-2/3 h-6 absolute bottom-20'
+					className='alert alert-warning shadow-lg w-max h-6 absolute bottom-20'
 					style={{ display: showError }}
 				>
 					<div>

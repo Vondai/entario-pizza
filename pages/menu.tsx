@@ -8,14 +8,16 @@ const Menu: NextPage<{ productList: TBaseProduct[] }> = ({ productList }) => {
 	return (
 		<div className={styles.container}>
 			<div className={styles.title}>
-				<h1>Menu</h1>
+				<h1 className='text-2xl'>Menu</h1>
 			</div>
-			{productList.map((product) => (
-				<ProductCard
-					key={product._id}
-					product={product}
-				/>
-			))}
+			<div className='flex gap-5 mt-10'>
+				{productList.map((product) => (
+					<ProductCard
+						key={product._id}
+						product={product}
+					/>
+				))}
+			</div>
 		</div>
 	);
 };

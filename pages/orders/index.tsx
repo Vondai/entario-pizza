@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 type TOrder = {
 	_id: string;
@@ -13,8 +14,13 @@ type TOrder = {
 };
 const Orders = () => {
 	const [orders, setOrders] = useState<TOrder[]>([]);
+	const router = useRouter();
 	useEffect(() => {
-		const user = JSON.parse(localStorage.getItem('user') || '');
+		const userAsString = localStorage.getItem('user');
+		const user = userAsString ? JSON.parse(userAsString) : '';
+		if (!user) {
+			router.push('/');
+		}
 		const fetchData = async () => {
 			const res = await axios.get(
 				`${process.env.NEXT_PUBLIC_BASE_URL}/orders?userId=${user._id}`
@@ -22,7 +28,7 @@ const Orders = () => {
 			setOrders(res.data);
 		};
 		fetchData();
-	}, []);
+	}, [router]);
 	return (
 		<div className='bg-accent h-screen p-5'>
 			<h2 className='text-center text-2xl font-bold'>Your orders</h2>

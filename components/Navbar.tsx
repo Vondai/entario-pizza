@@ -1,10 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import styles from '../styles/Navbar.module.css';
 import { TCartProduct } from '../types/TCartProduct';
 import AuthModal from './AuthModal';
+
 const Navbar = () => {
 	const quantity: number = useSelector((state: any) => state.cart.itemQuantity);
 	const [isAuthModalVisible, setIsAuthModalVisible] = useState(false);
@@ -12,14 +14,20 @@ const Navbar = () => {
 	const [cartQuantity, setCartQuantity] = useState(quantity);
 	const [cartTotalPrice, setCartTotalPrice] = useState(0);
 	const [loading, setLoading] = useState(true);
-
-	const handleLogin = () => {
+	const router = useRouter();
+	const handleSignout = () => {
+		localStorage.removeItem('user');
+		setIsAuthenticated(false);
+		router.push('/');
+	};
+	const handleSignin = () => {
 		setIsAuthModalVisible(true);
 	};
 
 	useEffect(() => {
 		const cartAsString = localStorage.getItem('cart');
-		const user = JSON.parse(localStorage.getItem('user') || '');
+		const userAsString = localStorage.getItem('user');
+		const user = userAsString ? JSON.parse(userAsString) : '';
 		if (user) {
 			setIsAuthenticated(true);
 		}
@@ -84,7 +92,14 @@ const Navbar = () => {
 					{isAuthenticated ? (
 						<Link href={'/orders'}>Orders</Link>
 					) : (
-						<button onClick={handleLogin}>Track your order</button>
+						<button onClick={handleSignin}>Track your order</button>
+					)}
+				</li>
+				<li>
+					{isAuthenticated ? (
+						<button onClick={() => handleSignout()}>Sign out</button>
+					) : (
+						''
 					)}
 				</li>
 			</ul>

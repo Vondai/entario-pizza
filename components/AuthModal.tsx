@@ -42,6 +42,7 @@ const AuthModal: React.FC<{
 				console.log(data.errorMessage);
 				return;
 			}
+			setIsAuthModalVisible(false);
 			router.push('/orders');
 		}
 	};
@@ -54,7 +55,7 @@ const AuthModal: React.FC<{
 				checked={isAuthModalVisible}
 				readOnly={true}
 			/>
-			<div className='modal'>
+			<div className='modal  text-accent-content'>
 				<div className='modal-box relative bg-accent'>
 					<label
 						onClick={() => setIsAuthModalVisible(!isAuthModalVisible)}
