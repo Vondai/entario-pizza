@@ -4,16 +4,25 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import styles from '../styles/Navbar.module.css';
 import { TCartProduct } from '../types/TCartProduct';
+import AuthModal from './AuthModal';
 const Navbar = () => {
 	const quantity: number = useSelector((state: any) => state.cart.itemQuantity);
-
+	const [isAuthModalVisible, setIsAuthModalVisible] = useState(false);
+	const [isAuthenticated, setIsAuthenticated] = useState(false);
 	const [cartQuantity, setCartQuantity] = useState(quantity);
 	const [cartTotalPrice, setCartTotalPrice] = useState(0);
-
 	const [loading, setLoading] = useState(true);
+
+	const handleLogin = () => {
+		setIsAuthModalVisible(true);
+	};
+
 	useEffect(() => {
 		const cartAsString = localStorage.getItem('cart');
-
+		const user = JSON.parse(localStorage.getItem('user') || '');
+		if (user) {
+			setIsAuthenticated(true);
+		}
 		if (cartAsString) {
 			const cart: TCartProduct[] = JSON.parse(cartAsString);
 			setLoading(false);
@@ -70,6 +79,13 @@ const Navbar = () => {
 				</li>
 				<li>
 					<Link href={'/about'}>About us</Link>
+				</li>
+				<li>
+					{isAuthenticated ? (
+						<Link href={'/orders'}>Orders</Link>
+					) : (
+						<button onClick={handleLogin}>Track your order</button>
+					)}
 				</li>
 			</ul>
 			<div className='flex-none'>
@@ -130,6 +146,10 @@ const Navbar = () => {
 					</div>
 				</div>
 			</div>
+			<AuthModal
+				isAuthModalVisible={isAuthModalVisible}
+				setIsAuthModalVisible={setIsAuthModalVisible}
+			/>
 		</div>
 	);
 };

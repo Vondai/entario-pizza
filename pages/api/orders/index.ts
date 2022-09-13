@@ -8,10 +8,11 @@ export default async function handler(
 ) {
 	await dbConnect();
 
-	const { method } = req;
+	const { method, query } = req;
+
 	if (method === 'GET') {
 		try {
-			const orders = await Order.find<IOrder>();
+			const orders = await Order.find<IOrder>({ user: query.userId });
 			res.status(200).json(orders);
 		} catch (error) {
 			res.status(500).json(error);

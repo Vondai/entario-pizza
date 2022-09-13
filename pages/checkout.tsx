@@ -26,7 +26,9 @@ const Checkout = () => {
 		const firstName = e.currentTarget['firstName'].value;
 		const lastName = e.currentTarget['lastName'].value;
 		const paymentMethod = e.currentTarget['paymentOption'].value;
+		const user = JSON.parse(localStorage.getItem('user') || '');
 		const order: TOrder = {
+			user: user._id,
 			customer: `${firstName} ${lastName}`,
 			total: cartTotal,
 			address: e.currentTarget['address'].value,

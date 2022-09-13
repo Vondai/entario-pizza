@@ -1,4 +1,5 @@
 export type TOrder = {
+	user: string;
 	customer: string;
 	address: string;
 	total: number;

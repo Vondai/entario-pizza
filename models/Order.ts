@@ -1,8 +1,9 @@
-import { model, models, Schema } from 'mongoose';
+import { model, models, Schema, SchemaDefinitionProperty } from 'mongoose';
 import Status from '../utils/enums/status';
 
 export interface IOrder {
 	_id: string;
+	user: SchemaDefinitionProperty<string>;
 	customer: string;
 	address: string;
 	total: number;
@@ -13,6 +14,11 @@ export interface IOrder {
 
 const OrderSchema = new Schema<IOrder>(
 	{
+		user: {
+			type: Schema.Types.ObjectId,
+			ref: 'User',
+			required: true
+		},
 		customer: {
 			type: String,
 			required: true,
