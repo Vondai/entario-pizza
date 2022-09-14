@@ -1,6 +1,7 @@
-import axios from 'axios';
 import { useRouter } from 'next/router';
 import { Dispatch, FormEvent, SetStateAction, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addUser } from '../redux/authSlice';
 import authService from '../services/authService';
 import SigninForm from './SigninForm';
 import SignupForm from './SignupForm';
@@ -11,7 +12,7 @@ const AuthModal: React.FC<{
 }> = ({ isAuthModalVisible, setIsAuthModalVisible }) => {
 	const [showSignupForm, setShowSignupForm] = useState(false);
 	const router = useRouter();
-
+	const dispatch = useDispatch();
 	const handleSubmitForm = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const formId = e.currentTarget.id;
@@ -42,6 +43,8 @@ const AuthModal: React.FC<{
 				console.log(data.errorMessage);
 				return;
 			}
+			const user = { _id: data.data._id, email: data.data.email };
+			dispatch(addUser(user));
 			setIsAuthModalVisible(false);
 			router.push('/orders');
 		}

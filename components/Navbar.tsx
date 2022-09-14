@@ -2,35 +2,41 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import { addUser, resetUser } from '../redux/authSlice';
+import { RootState } from '../redux/store';
+import loadUserData from '../services/loadUserData';
 import styles from '../styles/Navbar.module.css';
 import { TCartProduct } from '../types/TCartProduct';
 import AuthModal from './AuthModal';
 
 const Navbar = () => {
+	const userState = useSelector((state: RootState) => state.auth);
+	const dispatch = useDispatch();
 	const quantity: number = useSelector((state: any) => state.cart.itemQuantity);
 	const [isAuthModalVisible, setIsAuthModalVisible] = useState(false);
-	const [isAuthenticated, setIsAuthenticated] = useState(false);
 	const [cartQuantity, setCartQuantity] = useState(quantity);
 	const [cartTotalPrice, setCartTotalPrice] = useState(0);
 	const [loading, setLoading] = useState(true);
 	const router = useRouter();
+
 	const handleSignout = () => {
 		localStorage.removeItem('user');
-		setIsAuthenticated(false);
+		dispatch(resetUser());
 		router.push('/');
 	};
+
 	const handleSignin = () => {
 		setIsAuthModalVisible(true);
 	};
 
 	useEffect(() => {
-		const cartAsString = localStorage.getItem('cart');
-		const userAsString = localStorage.getItem('user');
-		const user = userAsString ? JSON.parse(userAsString) : '';
-		if (user) {
-			setIsAuthenticated(true);
+		const userData = loadUserData();
+		if (userData) {
+			dispatch(addUser(userData));
 		}
+		const cartAsString = localStorage.getItem('cart');
 		if (cartAsString) {
 			const cart: TCartProduct[] = JSON.parse(cartAsString);
 			setLoading(false);
@@ -41,7 +47,7 @@ const Navbar = () => {
 		} else {
 			setCartQuantity(quantity);
 		}
-	}, [quantity]);
+	}, [dispatch, quantity]);
 
 	return (
 		<div className='navbar justify-between sticky top-0 z-10 bg-primary px-10 max-h-20 text-white text-lg'>
@@ -89,14 +95,14 @@ const Navbar = () => {
 					<Link href={'/about'}>About us</Link>
 				</li>
 				<li>
-					{isAuthenticated ? (
+					{userState.isAuthenticated ? (
 						<Link href={'/orders'}>Orders</Link>
 					) : (
 						<button onClick={handleSignin}>Track your order</button>
 					)}
 				</li>
 				<li>
-					{isAuthenticated ? (
+					{userState.isAuthenticated ? (
 						<button onClick={() => handleSignout()}>Sign out</button>
 					) : (
 						''

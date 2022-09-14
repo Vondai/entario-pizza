@@ -1,3 +1,5 @@
+- [ ] Add admin panel.
+- [ ] Admin should be able to add new products.
 - [ ] Show error message when submiting an empty form.
 - [ ] Show error message when user already exists.
 - [ ] Close authModal when clicking outside.

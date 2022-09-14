@@ -1,9 +1,9 @@
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
 
 interface IAuthService {
 	createUser: (email: string, password: string, repeatPassword: string) => any;
 	signInUser: (email: string, password: string) => any;
-	//signOutUser: () => void;
 }
 
 const authService: IAuthService = {
@@ -22,10 +22,6 @@ const authService: IAuthService = {
 				`${process.env.NEXT_PUBLIC_BASE_URL}/auth`,
 				user
 			);
-			console.log('we are in try');
-
-			console.log(res.data);
-
 			return res;
 		} catch (error: any) {
 			return error.response.data;
@@ -33,14 +29,10 @@ const authService: IAuthService = {
 	},
 	signInUser: async (email: string, password: string) => {
 		try {
-			const user = {
+			const res = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/auth`, {
 				email,
 				password
-			};
-			const res = await axios.post(
-				`${process.env.NEXT_PUBLIC_BASE_URL}/auth`,
-				user
-			);
+			});
 			const { _id } = res.data.data;
 			localStorage.setItem('user', JSON.stringify({ email, _id }));
 			return res.data;
