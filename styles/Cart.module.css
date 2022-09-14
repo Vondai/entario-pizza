@@ -33,12 +33,6 @@
 	cursor: pointer;
 }
 
-.name {
-	font-size: 1.1rem;
-	font-weight: bold;
-	color: red;
-}
-
 .total {
 	font-size: 1.1rem;
 	font-weight: bold;
@@ -57,20 +51,6 @@
 	color: white;
 	border-radius: 1rem;
 	text-align: center;
-}
-
-.cta {
-	padding: 1rem;
-	border-radius: 1rem;
-	cursor: pointer;
-	font-size: 1.2rem;
-	font-weight: bold;
-}
-
-.cta:hover,
-.cta:focus {
-	background-color: red;
-	color: white;
 }
 
 .subTotalText,
@@ -102,10 +82,6 @@
 		flex: 1;
 	}
 
-	.name {
-		font-size: 1rem;
-	}
-
 	.img-container {
 		width: 3rem;
 		height: 3rem;
@@ -120,9 +96,5 @@
 	.discountText,
 	.totalText {
 		font-size: 1.1rem;
-	}
-
-	.cta {
-		padding: 0.7rem;
 	}
 }

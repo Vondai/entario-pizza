@@ -1,7 +1,11 @@
 import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { GetServerSideProps } from 'next/types';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+
 type TOrder = {
 	_id: string;
 	user: string;
@@ -13,22 +17,38 @@ type TOrder = {
 	phone: number;
 };
 const Orders = () => {
+	const userState = useSelector((state: RootState) => state.auth);
 	const [orders, setOrders] = useState<TOrder[]>([]);
 	const router = useRouter();
+
 	useEffect(() => {
-		const userAsString = localStorage.getItem('user');
-		const user = userAsString ? JSON.parse(userAsString) : '';
-		if (!user) {
+		if (!userState.isAuthenticated) {
 			router.push('/');
+			return;
 		}
 		const fetchData = async () => {
 			const res = await axios.get(
-				`${process.env.NEXT_PUBLIC_BASE_URL}/orders?userId=${user._id}`
+				`${process.env.NEXT_PUBLIC_BASE_URL}/orders?userId=${userState._id}`
 			);
 			setOrders(res.data);
 		};
 		fetchData();
-	}, [router]);
+	}, [router, userState]);
+
+	const noOrders = orders.length === 0;
+
+	if (noOrders) {
+		return (
+			<div className='h-screen flex'>
+				<h2 className='text-3xl m-auto'>
+					No orders yet. Check out our{' '}
+					<Link href={'/menu'}>
+						<span className='cursor-pointer underline'>menu.</span>
+					</Link>
+				</h2>
+			</div>
+		);
+	}
 	return (
 		<div className='bg-accent h-screen p-5'>
 			<h2 className='text-center text-2xl font-bold'>Your orders</h2>

@@ -11,9 +11,9 @@ const ProductList: NextPage<{ productList: TBaseProduct[] }> = ({
 				Freshly baked pizza every 5 minutes.
 			</h1>
 			<h3 className=' text-2xl text-center max-w-screen-md'>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt error,
-				excepturi natus placeat sed maxime quibusdam nam enim! Reiciendis,
-				labore?
+				Welcome to Entario`s online pizza shop. Here you will find the best
+				pizza in town, freshly wood oven baked. Check out our menu below and let
+				the journey begin.
 			</h3>
 			<div className='container flex gap-5'>
 				{productList.map((product) => (

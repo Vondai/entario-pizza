@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { Dispatch, FormEvent, SetStateAction, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addUser } from '../redux/authSlice';
 import authService from '../services/authService';
 import SigninForm from './SigninForm';
@@ -36,6 +36,7 @@ const AuthModal: React.FC<{
 				return;
 			}
 			setShowSignupForm(false);
+			return;
 		}
 		if (formId === 'signin') {
 			const data = await authService.signInUser(email, password);

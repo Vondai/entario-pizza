@@ -3,7 +3,7 @@
 	height: 100%;
 	display: flex;
 	margin-top: 3rem;
-	padding: 0 2rem;
+	padding: 0 2rem 2rem 2rem;
 }
 
 .left {
@@ -23,28 +23,11 @@
 	margin: 0 auto;
 }
 
-.title {
-	font-size: 2rem;
-}
-
-.price {
-	font-size: 1.7rem;
-	font-weight: bold;
-	color: red;
-	border-bottom: 1px solid red;
-	width: fit-content;
-}
-
-.description {
-	font-size: 1.2rem;
-	font-style: italic;
-}
-
 .sizes {
 	width: 40%;
 	display: flex;
 	justify-content: space-between;
-	margin-top: 1rem;
+	margin-top: 2rem;
 }
 
 .size {
@@ -82,10 +65,13 @@
 
 .option {
 	margin-bottom: 0.4rem;
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
 }
 
 .options {
-	margin-top: 5rem;
+	margin-top: 2rem;
 }
 
 .option input,
@@ -116,21 +102,6 @@
 	padding: 0.5rem;
 }
 
-.cta {
-	margin-left: 1rem;
-	padding: 0.5rem;
-	border-radius: 1rem;
-	color: #555;
-	cursor: pointer;
-	font-size: 1.1rem;
-	font-weight: bold;
-}
-
-.cta:hover {
-	background-color: red;
-	color: white;
-}
-
 @media screen and (max-width: 480px) {
 	.container {
 		flex-direction: column;
@@ -151,10 +122,6 @@
 
 	.description {
 		text-align: center;
-	}
-
-	.sizes {
-		width: 60%;
 	}
 
 	.options {

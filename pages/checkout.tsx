@@ -7,6 +7,7 @@ import PaymentMethod from '../utils/enums/paymentMethod';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { reset } from '../redux/cartSlice';
+import loadUserData from '../services/loadUserData';
 
 const Checkout = () => {
 	const [cart, setCart] = useState<TCheckoutProduct[]>([]);
@@ -26,7 +27,11 @@ const Checkout = () => {
 		const firstName = e.currentTarget['firstName'].value;
 		const lastName = e.currentTarget['lastName'].value;
 		const paymentMethod = e.currentTarget['paymentOption'].value;
-		const user = JSON.parse(localStorage.getItem('user') || '');
+		const user = loadUserData();
+		if (!user) {
+			router.push('/');
+			return;
+		}
 		const order: TOrder = {
 			user: user._id,
 			customer: `${firstName} ${lastName}`,
@@ -53,9 +58,9 @@ const Checkout = () => {
 	}
 
 	return (
-		<div className={styles.container}>
-			<h1 className={styles.title}>Checkout</h1>
-			<div className={styles.cart}>
+		<div className='h-screen flex flex-col bg-accent items-center gap-8'>
+			<h1 className='text-3xl font-bold'>Checkout</h1>
+			<div className='text-2xl'>
 				<h2 className={styles['cart-title']}>Cart items</h2>
 				<table className={styles.table}>
 					<thead className={styles['table-head']}>
@@ -140,7 +145,7 @@ const Checkout = () => {
 				</select>
 				<button
 					type='submit'
-					className={styles.cta}
+					className='btn mt-5'
 				>
 					Checkout
 				</button>

@@ -26,7 +26,7 @@ const Cart = () => {
 	}, []);
 
 	return (
-		<div className={styles.container}>
+		<div className='flex h-screen p-16 bg-accent text-xl text-white'>
 			<div className={styles.left}>
 				<table className={styles.table}>
 					<thead>
@@ -58,7 +58,9 @@ const Cart = () => {
 										</div>
 									</td>
 									<td>
-										<span className={styles.name}>{product.name}</span>
+										<span className='text-primary font-bold'>
+											{product.name}
+										</span>
 									</td>
 									<td>
 										<span className={styles.extras}>
@@ -103,7 +105,7 @@ const Cart = () => {
 						</span>
 					</div>
 					<button
-						className={styles.cta}
+						className='btn'
 						onClick={handleCheckoutClick}
 					>
 						CHECKOUT NOW

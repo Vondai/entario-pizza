@@ -66,7 +66,7 @@ const Product: NextPage<{ product: TPizzaProduct }> = ({ product }) => {
 	}
 
 	return (
-		<div className={styles.container}>
+		<div className='flex p-10 content-center bg-accent'>
 			<div className={styles.left}>
 				<div className={styles['img-container']}>
 					<Image
@@ -78,9 +78,11 @@ const Product: NextPage<{ product: TPizzaProduct }> = ({ product }) => {
 				</div>
 			</div>
 			<div className={styles.right}>
-				<h2 className={styles.title}>{product.name}</h2>
-				<span className={styles.price}>${totalPrice.toFixed(2)}</span>
-				<p className={styles.description}>{product.description}</p>
+				<h2 className='text-3xl font-bold'>{product.name}</h2>
+				<span className='underline text-3xl text-primary mb-5'>
+					${totalPrice.toFixed(2)}
+				</span>
+				<p className='italic text-xl mb-5'>{product.description}</p>
 				<h3>Select size</h3>
 				<div className={styles.sizes}>
 					<div
@@ -132,7 +134,9 @@ const Product: NextPage<{ product: TPizzaProduct }> = ({ product }) => {
 								value={extaOption.price}
 								onChange={(e) => handleOptionChange(e)}
 							/>
-							<label htmlFor={extaOption._id}>{extaOption.text}</label>
+							<label htmlFor={extaOption._id}>
+								{extaOption.text} ({extaOption.price})
+							</label>
 						</div>
 					))}
 				</div>
@@ -146,7 +150,7 @@ const Product: NextPage<{ product: TPizzaProduct }> = ({ product }) => {
 						onChange={(e) => setQuantity(Number(e.target.value))}
 					/>
 					<button
-						className={styles.cta}
+						className='btn ml-5 bg-primary'
 						onClick={handleAddToCart}
 					>
 						Add to Cart

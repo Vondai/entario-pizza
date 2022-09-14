@@ -6,7 +6,7 @@ import Link from 'next/link';
 const ProductCard: NextPage<{ product: TBaseProduct }> = ({ product }) => {
 	return (
 		<Link href={`/product/${product._id}`}>
-			<div className='card bg-primary shadow-xl w-1/3 cursor-pointer'>
+			<div className='card bg-primary shadow-xl w-1/3 cursor-pointer  hover:scale-105 '>
 				<div className='card-body flex flex-col text-center'>
 					<h2 className='card-title justify-center text-accent text-3xl'>
 						{product.name}
