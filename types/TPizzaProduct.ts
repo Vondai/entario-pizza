@@ -1,11 +1,11 @@
-import { TBaseProduct } from './TBaseProduct';
+import { TBaseProduct } from "./TBaseProduct";
 
 export interface TPizzaProduct extends TBaseProduct {
-	extraOptions?: [
-		{
-			text: string;
-			price: string;
-			_id: string;
-		}
-	];
+  extraOptions?: [
+    {
+      text: string;
+      price: string;
+      _id: string;
+    }
+  ];
 }
